@@ -44,7 +44,38 @@ THE SOFTWARE.
     overflow-wrap: anywhere;
   }
   #console .cursor {
+    display: inline-block;
     animation: blink 1s steps(2, start) infinite;
+  }
+  #profile strong {
+    color: #ff0096;
+  }
+  #profile em {
+    color: #a9a9a9;
+  }
+  #profile h2 {
+    margin: 1.5em 0 0.5em;
+    color: #ff0096;
+    font-size: 1em;
+    font-weight: normal;
+  }
+  #profile p {
+    margin: 0 0 1em;
+  }
+  #profile ul {
+    margin: 0 0 1em;
+    padding-left: 24px;
+  }
+  #profile ul:not(.is-started),
+  #profile ol:not(.is-started) {
+    display: none;
+  }
+  #profile li {
+    display: none;
+    margin-bottom: 0.25em;
+  }
+  #profile li.is-started {
+    display: list-item;
   }
   @keyframes blink {
     to { visibility: hidden; }
@@ -80,55 +111,143 @@ THE SOFTWARE.
 </head>
 <body>
 
-<div id="console" aria-live="off"></div>
+<div id="console" aria-live="off">
+  <div class="prompt"><span id="a">puri@amrit</span>:<span id="b">~</span><span id="c">$</span> cat profile.md<br><br></div>
+  <div id="profile"></div><span class="cursor" aria-hidden="true">|</span>
+</div>
 <script>
-  var consoleElement = document.getElementById("console");
+  var profileElement = document.getElementById("profile");
+  var cursorElement = document.querySelector("#console .cursor");
+
+  function loadMarkdownParser() {
+    return new Promise(function(resolve, reject) {
+      var script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js";
+      script.onload = function() {
+        if (typeof window.markdownit !== "function") {
+          reject(new Error("Markdown parser did not load"));
+          return;
+        }
+        resolve(window.markdownit({ html: false }));
+      };
+      script.onerror = function() {
+        reject(new Error("Markdown parser request failed"));
+      };
+      document.head.appendChild(script);
+    });
+  }
+
   var Typer = {
-    text: "",
-    index: 0,
-    speed: 3,
-    file: "amwrit_puri.html",
+    speed: 2,
+    baseDelay: 45,
+    delayJitter: 25,
+    file: "profile.md",
+    nodes: [],
+    nodeIndex: 0,
+    nodeOffset: 0,
     timer: null,
     init: function() {
-      fetch(this.file)
-        .then(function(response) {
+      Promise.all([
+        fetch(this.file).then(function(response) {
           if (!response.ok) {
-            throw new Error("Text request failed");
+            throw new Error("Profile request failed");
           }
           return response.text();
-        })
-        .then(function(data) {
-          Typer.text = data.replace(/\r?\n$/, "");
-
+        }),
+        loadMarkdownParser()
+      ]).then(function(results) {
+          profileElement.innerHTML = results[1].render(results[0]);
+          Typer.prepareTextNodes();
           if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-            Typer.index = Typer.text.length;
-            Typer.render();
+            Typer.showAll();
             return;
           }
-
-          Typer.timer = window.setInterval(function() {
-            Typer.typeNext();
-          }, 30);
+          Typer.scheduleNext();
         })
         .catch(function() {
-          consoleElement.textContent = "Unable to load the page text. ";
+          profileElement.textContent = "Unable to load the profile. ";
           var link = document.createElement("a");
           link.href = Typer.file;
-          link.textContent = "Open the text directly";
-          consoleElement.appendChild(link);
+          link.textContent = "Open the Markdown file";
+          profileElement.appendChild(link);
         });
     },
-    typeNext: function() {
-      this.index = Math.min(this.index + this.speed, this.text.length);
-      this.render();
+    prepareTextNodes: function() {
+      var walker = document.createTreeWalker(profileElement, NodeFilter.SHOW_TEXT);
+      var node;
 
-      if (this.index === this.text.length) {
-        window.clearInterval(this.timer);
+      while ((node = walker.nextNode())) {
+        this.nodes.push({ node: node, text: node.nodeValue });
+        node.nodeValue = "";
       }
     },
-    render: function() {
-      var visibleText = this.text.substring(0, this.index).replace(/\n/g, "<br>");
-      consoleElement.innerHTML = visibleText + '<span class="cursor">|</span>';
+    typeNext: function() {
+      var remaining = this.speed;
+      var pause = 0;
+
+      while (remaining > 0 && this.nodeIndex < this.nodes.length) {
+        var entry = this.nodes[this.nodeIndex];
+        var available = entry.text.length - this.nodeOffset;
+
+        if (available === 0) {
+          this.nodeIndex++;
+          this.nodeOffset = 0;
+          continue;
+        }
+
+        var count = Math.min(remaining, available);
+        var addedText = entry.text.substring(this.nodeOffset, this.nodeOffset + count);
+        this.nodeOffset += count;
+        entry.node.nodeValue = entry.text.substring(0, this.nodeOffset);
+        remaining -= count;
+        entry.node.parentNode.insertBefore(cursorElement, entry.node.nextSibling);
+
+        var listItem = entry.node.parentElement.closest("li");
+        if (listItem) {
+          listItem.classList.add("is-started");
+          listItem.closest("ul, ol").classList.add("is-started");
+        }
+
+        if (/[.!?]/.test(addedText)) {
+          pause = 280;
+        } else if (/[,;:]/.test(addedText)) {
+          pause = Math.max(pause, 110);
+        }
+
+        if (this.nodeOffset === entry.text.length) {
+          this.nodeIndex++;
+          this.nodeOffset = 0;
+        }
+      }
+
+      if (this.nodeIndex === this.nodes.length) {
+        window.clearTimeout(this.timer);
+      } else {
+        this.scheduleNext(pause);
+      }
+    },
+    scheduleNext: function(pause) {
+      var delay = pause || this.baseDelay + Math.floor(Math.random() * this.delayJitter);
+      this.timer = window.setTimeout(function() {
+        Typer.typeNext();
+      }, delay);
+    },
+    showAll: function() {
+      profileElement.querySelectorAll("ul, ol").forEach(function(list) {
+        list.classList.add("is-started");
+      });
+      profileElement.querySelectorAll("li").forEach(function(item) {
+        item.classList.add("is-started");
+      });
+
+      this.nodes.forEach(function(entry) {
+        entry.node.nodeValue = entry.text;
+      });
+
+      if (this.nodes.length) {
+        var lastNode = this.nodes[this.nodes.length - 1].node;
+        lastNode.parentNode.insertBefore(cursorElement, lastNode.nextSibling);
+      }
     }
   };
 
