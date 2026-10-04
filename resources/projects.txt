@@ -1,0 +1,183 @@
+Projects
+
+Projects from connected apps sync automatically and can’t be edited on LinkedIn.
+
+Teach for Nepal Connect (TFN-Connect)
+
+Jan 2026 – Present
+
+
+Community platform for Teach For Nepal Ecosystem - A comprehensive alumni network, job board, and community platform built with Next.js 15, Prisma, PostgreSQL, and deployed on Vercel.
+
+🎯 Platform Purpose
+TFN-Connect is an exclusive platform for:
+
+Alumni & Fellows: Update profiles, post career journeys, seek/post jobs
+LDCs & Staff: Track fellow development, manage placements, view analytics
+Recruiters & Schools: Browse TFN-vetted talent by skills and location
+Board Members: View impact dashboards and cohort success metrics
+
+✨ Features
+👥 Alumni Network
+Complete profile timelines with education, experience, and fellowships
+Skill endorsements and badges
+Real-time employment status tracking
+Career journey stories and achievements
+
+💼 Job Board
+Post and search education opportunities
+Smart matching based on skills and location
+Application tracking
+80%+ skills match suggestions
+
+📊 Activity Feed
+Career updates from community members
+Job postings and opportunities
+Achievement celebrations
+Community engagement
+
+📈 Dashboards
+Cohort success metrics and placement rates
+Alumni impact by region and sector
+Employment status tracking
+Skills distribution analytics… more
+
+
+Contributors: Ruma
+
+ AI Pair Programming / AI-Assisted Programming, Tailwind CSS and +12 skills
+
+TeachForNepal Season Of Giving Gala 
+
+Jan 2026 – Apr 2026
+
+https://tfngala.vercel.app/
+
+An elegant, interactive website for the 2026 charity gala fundraiser. Designed for a seamless guest and admin experience, with real-time features and a luxury event aesthetic.
+
+🌟 Main Features
+Homepage: Hero video, event highlights, animated stats, and RSVP call-to-action.
+Interactive Seating Chart: 12-table circular layout, guest popovers, real-time updates, and mobile-friendly design.
+Live Auction: Real-time bidding, item grid, countdown timers, and top bidders leaderboard.
+Admin Portal: Secure login, dashboard with tabs for seating, auction, program, Google Sheets sync, and settings. Full CRUD for auction items and seating, plus image management.
+Payment Info: QR code payment options, fallback image support, and dynamic alt text.
+Program & Highlights: Detailed event schedule, speaker bios, and event highlights gallery.
+Responsive Design: Optimized for all devices.… more
+
+
+Contributors: Ruma
+
+ AI Pair Programming / AI-Assisted Programming, Vercel V0 and +6 skills
+
+
+TFN-AI: Teach For Nepal RAG Chatbot
+
+Nov 2025 – Dec 2025
+
+TFN-AI: Teach For Nepal RAG Chatbot
+Hybrid RAG chatbot for Teach For Nepal.
+
+A Final Capstone Project developed as part of the "GenAI Fundamentals For Engineers" course during my employment at Leapfrog Technology Nepal.
+
+Features
+Retrieval-augmented generation (RAG) over PDFs and structured data (staff, alumni, fellows, schools, partners)
+Next.js 14+ frontend (React, Tailwind CSS)
+Node.js API backend (Bedrock LLM, FAISS vector store)
+Python preprocessing pipeline (scripts/)
+Secure: AWS Bedrock credentials via .env.local
+Adaptive UI: quick actions, structured cards, "View More" for large lists
+Robust error handling and modular design… more
+
+ Prompt Engineering, LangChain and +4 skills
+
+
+Associated with Leapfrog Technology, Inc.
+
+
+
+Alumni Network : Final Project for Harvard's CS50 SQL 2023
+
+Oct 2023 – Oct 2023
+
+There are total 14 entities. The ER diagram is included to demonstrate the relationships among different entities. A schema was developed for the purpose of creating tables in SQLITE. INDEX have be added for possible common searches.
+
+Submitted for the course: https://cs50.harvard.edu/sql/2023/
+
+Similarly, INSERT queries are written to test insertion of dummy data. Finally, some test SELECT queries are written.… more
+
+ SQL, SQLite and +1 skill
+
+
+GRADES50 : Final Python Project for Harvard's CS50P
+
+Oct 2022 – Oct 2022
+
+This is a demonstration of my project GRADES50 for final project submission of CS50P (https://cs50.harvard.edu/python/2022/).
+
+GRADES50 is a subject grade point and gpa calculator. It has two main features:
+- python project.py -v: User can view the list of students and their respective subject grades and gpa.
+- python project.py -a: User can add a new student to the list of students and their respective subject grades and gpa… more
+
+ Python (Programming Language)
+
+
+Artificial Intelligence Projects
+
+2021 – 2021
+
+Harvard's CS50AI 2020 | Assignment Submissions
+
+Developed upon the original distro code provided by CS50AI team.… more
+
+ Python (Programming Language) and Artificial Intelligence (AI)
+
+
+Ed-Dy Run
+
+2020 – 2020
+
+As part of learning through _Harvard's CS50G "Introduction to Game Development"_ course, I created this Developed as the final project submission for Harvard's CS50G "Introduction to Game Development".
+
+Here Ed in Ed-dy stands for Education. So it's an education game (Maths and English) for kids. 
+Taking the idea of a runner game (like Subway Surfer), where a target would be given, the player has to collect items so as to reach that target.
+
+https://github.com/amWRit/Ed-dyRun… more
+
+ Game Development
+
+
+L&F - Lost and Found
+
+2020 – 2020
+
+# About L&F
+L&F is a social community to help people find their lost items or report found items. People can post about their lost or found items, browse through the L&F feed and check the listings. They can claim the lost item to be theirs or claim to have found a lost item.
+
+Users can see a history of their posts and claims. Users can cancel claims, deny claims and delete posts. There is also a messaging feature for further confirmation of the claims based on photo proofs.
+
+# Languages
+- Python
+- HTML
+- Javascript
+- CSS
+- SQL
+
+
+# Platforms and Libraries
+- CS50 IDE
+- Flask
+- CS50 library
+- SQLite
+- Jinja… more
+
+ Python (Programming Language), SQLite and +4 skills
+
+
+Artain Student Management System (ASMAS)
+
+2016 – 2017
+
+ Database Design, Software Development and +1 skill
+
+
+Associated with Teach for Nepal

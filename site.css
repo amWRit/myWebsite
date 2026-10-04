@@ -1,0 +1,218 @@
+/*
+  Copyright (c) 2011 Sam Phippen <samphippen@googlemail.com>
+  Copyright (c) 2026 Amrit Puri
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  THE SOFTWARE.
+*/
+body {
+  background-color: #000;
+  margin: 0;
+}
+
+body[data-terminal="false"] .cursor {
+  display: none !important;
+}
+
+body[data-terminal="false"] .prompt {
+  opacity: 0.9;
+}
+
+#console {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 782px;
+  margin: 100px auto 0;
+  padding: 0 16px 72px;
+  color: #f3fff9;
+  font-family: courier, monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+#profile {
+  color: #f3fff9;
+}
+
+#profile p,
+#profile li,
+#profile div,
+#profile details,
+#profile h3,
+#profile h4,
+#profile h5,
+#profile h6 {
+  color: inherit;
+}
+
+#console .cursor {
+  display: inline-block;
+  animation: blink 1s steps(2, start) infinite;
+}
+
+body[data-terminal="false"] #console {
+  max-width: 900px;
+  margin: 48px auto 0;
+  color: #f3fff9;
+}
+
+body[data-terminal="false"] #profile {
+  color: #f3fff9;
+}
+
+body[data-terminal="false"] .portfolio-nav {
+  margin: 0 0 1.5em;
+  text-align: left;
+}
+
+body[data-terminal="false"] .portfolio-nav a {
+  color: #0a6;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+body[data-terminal="false"] .prompt {
+  display: none;
+}
+
+body[data-terminal="false"] .cursor {
+  display: none !important;
+}
+
+body[data-terminal="false"] #profile h1,
+body[data-terminal="false"] #profile h2 {
+  color: #ff0096;
+}
+
+body[data-terminal="false"] #profile strong {
+  color: #ff0096;
+}
+
+body[data-terminal="false"] #profile summary {
+  color: #0a6;
+}
+
+body[data-terminal="false"] #profile a,
+body[data-terminal="false"] a {
+  color: #0a6;
+}
+
+#profile h1,
+#profile h2 {
+  margin: 1.5em 0 0.5em;
+  color: #ff0096;
+  font-size: 1em;
+  font-weight: normal;
+}
+
+#profile h1:first-child {
+  margin-top: 0;
+}
+
+#profile strong {
+  color: #ff0096;
+}
+
+#profile em {
+  color: #f3fff9;
+}
+
+body[data-terminal="false"] #profile em {
+  color: #ff0096;
+}
+
+#profile p {
+  margin: 0 0 1em;
+}
+
+#profile ul,
+#profile ol {
+  margin: 0 0 1em;
+  padding-left: 24px;
+}
+
+#profile ul:not(.is-started),
+#profile ol:not(.is-started) {
+  display: none;
+}
+
+#profile li {
+  display: none;
+  margin-bottom: 0.25em;
+}
+
+#profile li.is-started {
+  display: list-item;
+}
+
+#profile details:not(.is-started) {
+  display: none;
+}
+
+#profile details {
+  margin: 0 0 0.8em;
+}
+
+#profile summary {
+  color: #0bc;
+  cursor: pointer;
+}
+
+#profile summary::marker {
+  color: #ff0096;
+}
+
+#profile details[open] > :not(summary) {
+  margin-left: 1.25em;
+}
+
+#profile a,
+a {
+  color: #0bc;
+  text-decoration: none;
+}
+
+#a {
+  color: #0f0;
+}
+
+#b {
+  color: #ff0096;
+}
+
+#c {
+  color: #0bc;
+}
+
+@keyframes blink {
+  to { visibility: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #console .cursor {
+    animation: none;
+  }
+}
+
+@media (max-width: 600px) {
+  #console {
+    margin-top: 32px;
+  }
+}
