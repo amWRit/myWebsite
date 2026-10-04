@@ -82,7 +82,7 @@ body[data-terminal="false"] .portfolio-nav {
 }
 
 body[data-terminal="false"] .portfolio-nav a {
-  color: #0a6;
+  color: #0bc;
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 1.5px;
@@ -106,12 +106,12 @@ body[data-terminal="false"] #profile strong {
 }
 
 body[data-terminal="false"] #profile summary {
-  color: #0a6;
+  color: #0bc;
 }
 
 body[data-terminal="false"] #profile a,
 body[data-terminal="false"] a {
-  color: #0a6;
+  color: #0bc;
 }
 
 #profile h1,
