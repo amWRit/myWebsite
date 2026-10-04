@@ -192,7 +192,12 @@ Programming and STEAM education, curriculum design, computational thinking, proj
 
 ### Awards & Honors
 
-- Academic scholarships at multiple stages, including Kathmandu University and University Grants Commission support
+- Academic scholarships at multiple stages, including:
+  - Motherland Secondary School (Grades 6–10)
+  - Himalayan White House International College (HSEB +2)
+  - Kathmandu University (Bachelor’s)
+  - University Grants Commission (Master’s)
+  - Open Institute (PGD)
 - First place, Threadpaints “Butta” T-shirt Design Contest (2013)
 - Kathmandu University IT Meet awards for yourGUIDE and Morphological Analyzer
 - Art and photography competition awards at Kathmandu University
